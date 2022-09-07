@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <title>ON AIR</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="index.js"></script>
+</head>
+<body class="scroll">
+    <img src="img/bg.jpg" style="width: 100%; position: absolute; z-index: -100;">
+
+    <!--cam-->
+    <div style="width: 100%; height: 100%;">
+        <video id="cameraview" class="cam"></video>
+    </div>
+
+    <!--cam pick-->
+    <canvas id="myCanvas" width="108" height="58" style="position: absolute; z-index: 100; background-color: white; top: 86.36%; left: 78.7%;">
+        <video id="cameraview"></video>
+    </canvas><br>
+
+    <a  type="button" value="get Pic" target="_self" onclick="{takeSnapshot()}" style=" display:block; cursor: pointer;">
+        <div style="top: 93.85%; left: 48.4%; width: 3.2%; height: auto; position: absolute; z-index: 40;">
+            <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.32 51.32"><defs><style>.cls-21{fill: #ec5c4e;}.cls-22{fill:#fff;}</style></defs><circle class="cls-21" cx="25.66" cy="25.66" r="25.66"/><path class="cls-22" d="M829.27,892.87a3.34,3.34,0,0,1-.85-2.49V879.63a3.36,3.36,0,0,1,.85-2.49,3.41,3.41,0,0,1,2.51-.84h2.68a2.3,2.3,0,0,0,.91-.14,2.44,2.44,0,0,0,.65-.52l.81-.88a2.57,2.57,0,0,1,2.13-.84h4.21a3.13,3.13,0,0,1,1.25.21,2.68,2.68,0,0,1,.86.63l.81.88a4.66,4.66,0,0,0,.45.4,1.15,1.15,0,0,0,.45.2,3,3,0,0,0,.66.06h2.74a3.47,3.47,0,0,1,2.52.84,3.36,3.36,0,0,1,.85,2.49v10.75a3.34,3.34,0,0,1-.85,2.49,3.43,3.43,0,0,1-2.52.85H831.78A3.37,3.37,0,0,1,829.27,892.87Zm14-2.79a5.51,5.51,0,0,0,3-3,5.56,5.56,0,0,0,.43-2.17,5.45,5.45,0,0,0-.74-2.8,5.56,5.56,0,0,0-2-2,5.44,5.44,0,0,0-2.79-.74,5.6,5.6,0,0,0-2.17.43,5.4,5.4,0,0,0-1.75,1.18A5.63,5.63,0,0,0,836,882.8a5.67,5.67,0,0,0,0,4.33,5.63,5.63,0,0,0,1.19,1.77,5.58,5.58,0,0,0,6.07,1.18Zm-4-1.91a3.71,3.71,0,0,1-1.34-1.33,3.77,3.77,0,0,1,0-3.75,3.82,3.82,0,0,1,1.34-1.34,3.73,3.73,0,0,1,3.73,0,3.82,3.82,0,0,1,1.34,1.34,3.77,3.77,0,0,1,0,3.75,3.71,3.71,0,0,1-1.34,1.33,3.73,3.73,0,0,1-3.73,0Zm8.47-6a1.35,1.35,0,1,0,1-2.33,1.32,1.32,0,0,0-1,.41,1.29,1.29,0,0,0-.41,1A1.32,1.32,0,0,0,847.69,882.17Z" transform="translate(-815.43 -859.15)"/></svg>
+        </div>
+    </a>
+
+    <!--on air-->
+    <div class="tab" style="top: 0%; left: 13.7%;">
+        <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.38 28.64"><defs><style>.cls-1{fill:#444;}.cls-2{fill:#ed6a5f;}.cls-3{fill:#f4bd4f;}.cls-4{fill:#61c454;}.cls-5{fill:#fff;}</style></defs><path class="cls-1" d="M9.71,0h1198a9.71,9.71,0,0,1,9.71,9.71V28.64a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V9.71A9.71,9.71,0,0,1,9.71,0Z"/><circle class="cls-2" cx="15.08" cy="14.32" r="6.03"/><circle class="cls-3" cx="35.16" cy="14.32" r="6.03"/><circle class="cls-4" cx="55.24" cy="14.32" r="6.03"/><path class="cls-5" d="M819.24,19.56a4.25,4.25,0,0,1-1.65-1.83,6.25,6.25,0,0,1-.59-2.8v0a6.25,6.25,0,0,1,.59-2.8,4.19,4.19,0,0,1,1.66-1.82,5.31,5.31,0,0,1,5.09,0A4.31,4.31,0,0,1,826,12.11a6.39,6.39,0,0,1,.58,2.8v0a6.39,6.39,0,0,1-.58,2.8,4.27,4.27,0,0,1-1.66,1.83,4.82,4.82,0,0,1-2.54.64A4.89,4.89,0,0,1,819.24,19.56Zm4.24-1.24A3,3,0,0,0,824.57,17a5,5,0,0,0,.39-2v0a5,5,0,0,0-.39-2.05,3.05,3.05,0,0,0-1.1-1.34A3,3,0,0,0,819,12.86a4.93,4.93,0,0,0-.39,2.05v0A5,5,0,0,0,819,17a3,3,0,0,0,1.09,1.34,2.94,2.94,0,0,0,1.69.47A3,3,0,0,0,823.48,18.32Z" transform="translate(-231.96)"/><path class="cls-5" d="M828.31,9.81h1.47l6.28,9-1.67-1.49h.68V9.81h1.58V20h-1.46l-6.29-9,1.68,1.48h-.69V20h-1.58Z" transform="translate(-231.96)"/><path class="cls-5" d="M844.85,9.81h1.29v1.7h-.44L842.81,20h-1.67ZM843.4,16H848l.46,1.27h-5.54Zm2.33-4.49V9.81h.84L850.28,20h-1.67Z" transform="translate(-231.96)"/><path class="cls-5" d="M851.63,9.81h1.58V20h-1.58Z" transform="translate(-231.96)"/><path class="cls-5" d="M855.31,9.81h4a3.92,3.92,0,0,1,1.8.39,2.75,2.75,0,0,1,1.18,1.08,3.17,3.17,0,0,1,.41,1.66v0a3.19,3.19,0,0,1-.52,1.82,2.83,2.83,0,0,1-1.45,1.09L863,20h-1.84l-2.08-3.91H856.9V20h-1.59Zm3.82,5a2,2,0,0,0,1.42-.48,1.8,1.8,0,0,0,.5-1.36h0a1.72,1.72,0,0,0-.53-1.33,2.05,2.05,0,0,0-1.44-.48H856.9v3.66Z" transform="translate(-231.96)"/></svg>
+    </div>
+        
+    <div class="tab" style="top: 85.6%; left: 13.7%;">
+       <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.38 131.9"><defs><style>.cls-11{fill:#4c4948;}.cls-12{fill:#5c5c5c;}.cls-13{fill:#696969;}.cls-14,.cls-17{fill:#fff;}.cls-15{fill:#a6a6a6;stroke:#9e9e9e;stroke-miterlimit:10;stroke-width:0.5px;}.cls-16{fill:#999;}.cls-17{font-size:14px;font-family:Roboto-Medium, Roboto;font-weight:500;letter-spacing:0.04em;}</style></defs><rect class="cls-11" width="1217.38" height="71.54"/><path class="cls-12" d="M241.58,854.63h1198a9.71,9.71,0,0,1,9.71,9.71V915a0,0,0,0,1,0,0H231.87a0,0,0,0,1,0,0V864.35A9.71,9.71,0,0,1,241.58,854.63Z" transform="translate(1449.25 986.54) rotate(180)"/><rect class="cls-13" x="20.93" y="91.21" width="99.05" height="21.02" rx="4.04"/><path class="cls-14" d="M329.26,889a2.45,2.45,0,0,1-.68-1.85v-5.6a2.42,2.42,0,0,1,.7-1.86,2.62,2.62,0,0,1,1.87-.66h6.6a2.56,2.56,0,0,1,1.89.66,2.49,2.49,0,0,1,.68,1.86v5.56a2.52,2.52,0,0,1-.68,1.87,2.56,2.56,0,0,1-1.89.66h-6.6A2.62,2.62,0,0,1,329.26,889Zm8.28-.5a1.63,1.63,0,0,0,1.16-.39,1.55,1.55,0,0,0,.41-1.17v-5.21a1.6,1.6,0,0,0-.41-1.18,1.61,1.61,0,0,0-1.16-.39h-6.18a1.63,1.63,0,0,0-1.16.39,1.58,1.58,0,0,0-.41,1.18v5.21a1.55,1.55,0,0,0,.41,1.17,1.63,1.63,0,0,0,1.16.39Zm5.07-8.1a2.28,2.28,0,0,1,.45-.29,1,1,0,0,1,1.16.17,1,1,0,0,1,.27.75v6.63a1.07,1.07,0,0,1-.27.76,1,1,0,0,1-1.16.17,2.35,2.35,0,0,1-.45-.3l-2.5-2.12v-1.35l3,2.44.07,0,.07,0c.07,0,.1-.05.1-.14v-5.68c0-.1,0-.15-.1-.15a.11.11,0,0,0-.07,0l-.07.05-3,2.44v-1.36Z" transform="translate(-231.87 -783.1)"/><rect class="cls-15" x="55.05" y="92.21" width="31.79" height="19.02" rx="3.81"/><path class="cls-14" d="M262.34,883.84a1.48,1.48,0,0,1-.33-1.06v-2.65a1.47,1.47,0,0,1,.33-1,1.43,1.43,0,0,1,1-.34h3.91a1.21,1.21,0,0,1,1.37,1.39v2.65a1.21,1.21,0,0,1-1.37,1.4h-3.91A1.43,1.43,0,0,1,262.34,883.84Zm0,6.42a1.47,1.47,0,0,1-.33-1v-2.66a1.47,1.47,0,0,1,.33-1,1.43,1.43,0,0,1,1-.34h3.91a1.21,1.21,0,0,1,1.37,1.39v2.66a1.21,1.21,0,0,1-1.37,1.39h-3.91A1.43,1.43,0,0,1,262.34,890.26Zm4.93-7.13a.33.33,0,0,0,.25-.09.38.38,0,0,0,.08-.26v-2.65a.38.38,0,0,0-.08-.26.37.37,0,0,0-.25-.08h-3.89a.36.36,0,0,0-.25.08.38.38,0,0,0-.08.26v2.65a.38.38,0,0,0,.08.26.32.32,0,0,0,.25.09Zm0,6.42a.37.37,0,0,0,.25-.08.38.38,0,0,0,.08-.26v-2.66a.36.36,0,0,0-.08-.25.33.33,0,0,0-.25-.09h-3.89a.32.32,0,0,0-.25.09.36.36,0,0,0-.08.25v2.66a.38.38,0,0,0,.08.26.36.36,0,0,0,.25.08Zm2.71-5.71a1.44,1.44,0,0,1-.34-1.06v-2.65a1.21,1.21,0,0,1,1.37-1.39h3.91a1.43,1.43,0,0,1,1,.34,1.47,1.47,0,0,1,.34,1v2.65a1.48,1.48,0,0,1-.34,1.06,1.43,1.43,0,0,1-1,.34H271A1.43,1.43,0,0,1,270,883.84Zm0,6.42a1.43,1.43,0,0,1-.34-1v-2.66a1.21,1.21,0,0,1,1.37-1.39h3.91a1.43,1.43,0,0,1,1,.34,1.47,1.47,0,0,1,.34,1v2.66a1.47,1.47,0,0,1-.34,1,1.43,1.43,0,0,1-1,.34H271A1.43,1.43,0,0,1,270,890.26Zm4.93-7.13a.32.32,0,0,0,.25-.09.38.38,0,0,0,.08-.26v-2.65a.38.38,0,0,0-.08-.26.36.36,0,0,0-.25-.08H271a.37.37,0,0,0-.25.08.38.38,0,0,0-.08.26v2.65a.38.38,0,0,0,.08.26.33.33,0,0,0,.25.09Zm0,6.42a.36.36,0,0,0,.25-.08.38.38,0,0,0,.08-.26v-2.66a.36.36,0,0,0-.08-.25.32.32,0,0,0-.25-.09H271a.33.33,0,0,0-.25.09.36.36,0,0,0-.08.25v2.66a.38.38,0,0,0,.08.26.37.37,0,0,0,.25.08Z" transform="translate(-231.87 -783.1)"/><path class="cls-14" d="M296.1,890a2.08,2.08,0,0,1-.52-1.54v-7.73a2.08,2.08,0,0,1,.52-1.54,2.12,2.12,0,0,1,1.56-.52h10.86a2.16,2.16,0,0,1,1.57.52,2.08,2.08,0,0,1,.52,1.54v7.73a2.08,2.08,0,0,1-.52,1.54,2.2,2.2,0,0,1-1.57.52H297.66A2.16,2.16,0,0,1,296.1,890Zm12.35-.73a.91.91,0,0,0,.68-.23.94.94,0,0,0,.23-.69v-7.51a.94.94,0,0,0-.23-.69.91.91,0,0,0-.68-.23H297.73a.88.88,0,0,0-.67.23.9.9,0,0,0-.23.69v7.51a.9.9,0,0,0,.23.69.88.88,0,0,0,.67.23Zm-9.08-.77a3.86,3.86,0,0,1,1-.93,4.81,4.81,0,0,1,1.27-.61,5.46,5.46,0,0,1,3,0,4.81,4.81,0,0,1,1.27.61,3.82,3.82,0,0,1,.95.93,3.44,3.44,0,0,1,.53,1.17h-8.51A3.44,3.44,0,0,1,299.37,888.53Zm2.63-3.09a2.29,2.29,0,0,1-.78-.85,2.64,2.64,0,0,1-.29-1.21,2.37,2.37,0,0,1,.29-1.15,2.21,2.21,0,0,1,.78-.85,2,2,0,0,1,2.19,0,2.21,2.21,0,0,1,.78.85,2.26,2.26,0,0,1,.29,1.15,2.47,2.47,0,0,1-.29,1.22,2.21,2.21,0,0,1-.78.85,1.87,1.87,0,0,1-1.09.3A2,2,0,0,1,302,885.44Z" transform="translate(-231.87 -783.1)"/><rect class="cls-16" x="1095.22" y="91.21" width="96.05" height="21.02" rx="4.04"/><text class="cls-17" transform="translate(1110.01 106.72)">Check Pic</text></svg>
+    </div>
+
+    <div class="tab" style="top: 3.05%; left:13.7%">
+        <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.29 754.45"><path d="M1448.5,29.39v753H232.71v-753H1448.5m.75-.75H232V783.1H1449.25V28.64Z" transform="translate(-231.96 -28.64)"/></svg>
+    </div>
+    
+    <!--mydiv1 ~ 5-->
+    <div id="mydiv1" style="top: 1.5%; left: 3.5%; z-index: 30;">
+        <a href="https://min-jii.github.io/04-10-index/" target="_new" style="cursor: move;">
+            <img src="img/img2.png" class="folder" style="top: 4%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 9.3%;">index1.html</p>
+        </div> 
+	</div>
+
+    <div id="mydiv2" style="top: 20.4%; left: 3.5%; z-index: 30;">
+        <a href="https://min-jii.github.io/05-15-index/" target="_new" style="cursor: move;">
+            <img src="img/img2.png" class="folder" style="top: 4%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 9.3%;">index2.html</p>
+        </div> 
+	</div>
+
+    <div id="mydiv3" style="top: 39.2%; left: 3.5%; z-index: 30;">
+        <a href="https://min-jii.github.io/07-01-index/index.html" target="_new" style="cursor: move;">
+            <img src="img/img2.png" class="folder" style="top: 4%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 9.3%;">index3.html</p>
+        </div> 
+	</div>
+    
+    <div id="mydiv4" style="top: 58%; left: 3.5%; z-index: 30;">
+        <a href="https://min-jii.github.io/10-27-index/" target="_new" style="cursor: move;">
+            <img src="img/img2.png" class="folder" style="top: 4%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 9.3%;">index4.html</p>
+        </div> 
+	</div>
+
+    <div id="mydiv5" style="top: 76.7%; left: 3.5%; z-index: 30;">
+        <a href="https://min-jii.github.io/12-15-index/" target="_new" style="cursor: move;">
+            <img src="img/img2.png" class="folder" style="top: 4%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 9.3%;">index5.html</p>
+        </div> 
+	</div>
+    
+    <!--mydiv6-->
+    <div id="mydiv6" style="top: 1.5%; left: 90%; z-index: 30;">
+        <a href="ssd/ssd.html" target="_new" style="cursor: move;">
+            <img src="img/img4.png" class="ssd" style="top: 2%; left: -5%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 13.5%;">T7 Touch</p>
+        </div> 
+	</div>
+    
+    <!--mydiv7-->
+    <div id="mydiv7" style="top: 20.4%; left: 90%; z-index: 30;">
+        <a href="files/files.html" target="_new" style="cursor: move;">
+            <img src="img/img3.png" class="zip" style="top: 2%; left: 10%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 52%; margin-left: 7.5%;">Archive.zip</p>
+        </div> 
+	</div>
+
+    <!--mydiv8-->
+    <div id="mydiv8" style="top: 38%; left: 90%; z-index: 30;">
+        <a href="https://url.kr/ak1cpf" target="_new" style="cursor: move;">
+            <img src="img/img5.png" class="pdf" style="top: 2%; left: -7%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 60%; margin-left: 4.5%;">Portfolio.pdf</p>
+        </div> 
+	</div>
+
+    <!--mydiv9-->
+    <div id="mydiv9" style="top: 58%; left: 90%; z-index: 30;">
+        <a href="https://min-jii.github.io/tobeside/index.html" target="_new" style="cursor: move;">
+            <img src="img/img1.png" class="file2" style="top: 10%; left: -3%;">
+        </a> 
+        <div id="mydivheader2">
+            <p class="h1" style="margin-top: 38%; margin-left: 18%;">2BSIDE</p>
+        </div> 
+	</div>
+
+    <!--mydiv10-->
+    <div id="mydiv10" style="top: 76.7%; left: 90%; z-index: 30;">
+        <a href="https://min-jii.github.io/hypercode-main/" target="_new" style="cursor: move;">
+            <img src="img/img1.png" class="file2" style="top: 10%; left: -3%;">
+        </a> 
+        <div id="mydivheader2">
+            <p class="h1" style="margin-top: 38%; margin-left: 0.2%;">HYPER-CODE</p>
+        </div> 
+	</div>
+    
+    <!--mydiv11-->
+    <div id="mydiv" style="display: none;">
+		<span onclick="this.parentElement.style.display='none';">
+            <div id="mydivheader3">
+                <img src="img/img0.png" class="info">
+            </div>
+        </span>
+	</div>	
+    <div>
+        <a  target="_self" onclick="document.getElementById('mydiv').style.display='block';" class="box">
+            <div id="mydiv11" style="top: 1.5%; left: 78%; z-index: 50;">
+                <a style="cursor: move;">
+                    <img src="img/img0.png" class="info" style="top: 2%; left: 7%;">
+                </a> 
+                <div id="mydivheader">
+                    <p class="h1" style="margin-top: 51%; margin-left: 10%;">About Me.txt</p>
+                </div> 
+            </div>
+        </a>
+    </div>
+
+    <!--mydiv12-->
+    <div id="mydiv12" style="top: 21.3%; left: 78%; z-index: 30;">
+        <a href="https://youtu.be/FEiIYHq07E0" target="_new" style="cursor: move;">
+            <img src="img/img7.png" class="sp" style="top: 2.5%; left: -0.5%;">
+        </a> 
+        <div id="mydivheader2">
+            <p class="h1" style="margin-top: 31%; margin-left: 1%;">Something New</p>
+        </div> 
+	</div>
+
+    <!--mydiv13-->
+    <div id="mydiv13" style="top: 38.5%; left: 78%; z-index: 30;">
+        <a href="mailto:98052kmg@gmail.com" target="_new" style="cursor: move;">
+            <img src="img/img8.png" class="sp" style="top: 2.5%; left: 7%;">
+        </a> 
+        <div id="mydivheader">
+            <p class="h1" style="margin-top: 56%; margin-left: 12%;">@gmail.com</p>
+        </div> 
+	</div>
+
+<script>
+    //cam
+    mainInit();
+
+    //cam pick
+    var cameraviewStream = document.getElementById('cameraview')
+    var myStoredInterval = 0
+
+    //mydiv:
+    dragElement(document.getElementById("mydiv"));
+
+    //mydiv1~5:
+    dragElement(document.getElementById("mydiv1"));
+    dragElement(document.getElementById("mydiv2"));
+    dragElement(document.getElementById("mydiv3"));
+    dragElement(document.getElementById("mydiv4"));
+    dragElement(document.getElementById("mydiv5"));
+
+    //mydiv6~10:
+    dragElement(document.getElementById("mydiv6"));
+    dragElement(document.getElementById("mydiv7"));
+    dragElement(document.getElementById("mydiv8"));
+    dragElement(document.getElementById("mydiv9"));
+    dragElement(document.getElementById("mydiv10"));
+
+    //mydiv11~13
+    dragElement(document.getElementById("mydiv11"));
+    dragElement(document.getElementById("mydiv12"));
+    dragElement(document.getElementById("mydiv13"));
+</script>
+</body>
+</html>
